@@ -20,4 +20,13 @@ describe Oystercard do
     expect(subject.balance).to eq 25
   end
   it { is_expected.to respond_to(:touch_in) }
+  it 'is in journey once touched in' do
+    subject.touch_in
+    expect(subject).to be_in_journey
+  end
+  it { is_expected.to respond_to(:touch_out)}
+  it 'is not in journey once touched out' do
+    subject.touch_out
+    expect(subject).not_to be_in_journey
+  end
 end
