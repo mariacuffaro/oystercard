@@ -10,6 +10,13 @@ describe Oystercard do
     expect(subject.balance).to eq(5)
   end
   it 'cannot be topped up above top-up limit' do
-    expect { subject.top_up(91) }.to raise_error("Unable to top up above #{subject.max_limit}")
+    limit = subject.max_limit
+    expect { subject.top_up(91) }.to raise_error("Cannot top up above #{limit}")
+  end
+  it { is_expected.to respond_to(:deduct).with(1).argument }
+  it 'deducts fare from the balance' do
+    subject.top_up(30)
+    subject.deduct(5)
+    expect(subject.balance).to eq 25
   end
 end
