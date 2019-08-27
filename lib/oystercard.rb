@@ -16,4 +16,8 @@ class Oystercard
   def deduct(amount)
     @balance -= amount
   end
+
+  def touch_in
+  end
+
 end

@@ -19,4 +19,5 @@ describe Oystercard do
     subject.deduct(5)
     expect(subject.balance).to eq 25
   end
+  it { is_expected.to respond_to(:touch_in) }
 end
