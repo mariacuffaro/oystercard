@@ -40,27 +40,32 @@ describe Oystercard do
       expect { touch_in }.to raise_error "Card must have at least #{Oystercard::MIN_FARE} to travel"
     end
 
-    it 'knows the station where it touched in' do
+    it 'starts the journey' do
       subject.top_up(1)
       touch_in
-      expect(subject.entry_station).to eq station
+      expect(subject.journey).not_to be_nil
     end
   end
 
   describe '#touch_out' do
+    before :each do
+      subject.top_up(5)
+      touch_in
+    end
+    
     it 'is not in journey once touched out' do
       touch_out
       expect(subject).not_to be_in_journey
     end
 
     it 'deducts the minimum fare' do
-      subject.top_up(5)
+      p subject.journey.complete?
       expect { touch_out }.to change { subject.balance }.by(-Oystercard::MIN_FARE)
     end
 
     it 'forgets the entry station' do
       touch_out
-      expect(subject.entry_station).to be_nil
+      expect(subject.journey).to be_nil
     end
   end
 
@@ -69,7 +74,11 @@ describe Oystercard do
       subject.top_up(5)
       touch_in
       touch_out
-      expect(subject.journeys.last).to eq({ start_station: station, end_station: end_station })
+
+      journey = subject.journeys.last
+
+      expect(journey.origin).to eq station
+      expect(journey.destination).to eq end_station
     end
   end
 end
