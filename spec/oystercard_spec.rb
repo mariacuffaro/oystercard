@@ -47,7 +47,6 @@ describe Oystercard do
     end
   end
 
-
   describe '#touch_out' do
     it 'is not in journey once touched out' do
       touch_out

@@ -9,7 +9,6 @@ class Oystercard
     @balance = balance
     @max_limit = MAX_LIMIT
     @min_fare = MIN_FARE
-    @entry_station = nil
     @journeys = []
   end
 
@@ -44,10 +43,6 @@ class Oystercard
     (@balance + amount) > @max_limit
   end
 
-  def deduct(amount)
-    @balance -= amount
-  end
-
   def start_journey(station)
     @entry_station = station
   end
@@ -55,5 +50,9 @@ class Oystercard
   def end_journey(station)
     @journeys << { start_station: @entry_station, end_station: station }
     @entry_station = nil
+  end
+
+  def deduct(amount)
+    @balance -= amount
   end
 end
