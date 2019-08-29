@@ -1,11 +1,23 @@
 require './lib/oystercard.rb'
 
 describe Oystercard do
+
+  let(:station) { double :station }
+  let(:end_station) { double :station }
+
+  def touch_out
+    subject.touch_out(end_station)
+  end
+
+  def touch_in
+    subject.touch_in(station)
+  end
+
   it 'starts with a zero balance' do
     expect(subject.balance).to eq(0)
   end
 
-  describe '#top-up' do
+  describe '#top_up' do
     it 'updates balance with top up amount' do
       subject.top_up(5)
       expect(subject.balance).to eq(5)
@@ -17,40 +29,48 @@ describe Oystercard do
     end
   end
 
-  describe '#touch in' do
-    let(:station) { double :station }
-
+  describe '#touch_in' do
     it 'is in journey once touched in' do
       subject.top_up(1)
-      subject.touch_in(station)
+      touch_in
       expect(subject).to be_in_journey
     end
 
     it 'cannot touch in if balance too low' do
-      expect { subject.touch_in(station) }.to raise_error "Card must have at least #{Oystercard::MIN_FARE} to travel"
+      expect { touch_in }.to raise_error "Card must have at least #{Oystercard::MIN_FARE} to travel"
     end
 
     it 'knows the station where it touched in' do
       subject.top_up(1)
-      subject.touch_in(station)
+      touch_in
       expect(subject.entry_station).to eq station
     end
   end
 
-  describe '#touch out' do
+
+  describe '#touch_out' do
     it 'is not in journey once touched out' do
-      subject.touch_out
+      touch_out
       expect(subject).not_to be_in_journey
     end
 
     it 'deducts the minimum fare' do
       subject.top_up(5)
-      expect { subject.touch_out }.to change { subject.balance }.by(-Oystercard::MIN_FARE)
+      expect { touch_out }.to change { subject.balance }.by(-Oystercard::MIN_FARE)
     end
 
     it 'forgets the entry station' do
-      subject.touch_out
+      touch_out
       expect(subject.entry_station).to be_nil
+    end
+  end
+
+  describe 'journey history' do
+    it 'stores previous journeys' do
+      subject.top_up(5)
+      touch_in
+      touch_out
+      expect(subject.journeys.last).to eq({ start_station: station, end_station: end_station })
     end
   end
 end
