@@ -35,7 +35,13 @@ describe Journey do
       end
 
       it 'returns calculated fare' do
-        expect(subject.fare).to eq described_class::calculated_fare
+        expect(subject.fare).to eq subject.calculated_fare
+      end
+
+      it 'returns correct fare' do
+        origin = Station.new(name: "Walthamstow",zone: 4)
+        destination = Station.new(name: "Victoria",zone: 1)
+        expect(subject.fare).to eq 4
       end
     end
   end

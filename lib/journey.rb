@@ -1,5 +1,5 @@
 class Journey
-  attr_reader :origin, :destination
+  attr_reader :origin, :destination, :calculated_fare
 
   FIXED_PENALTY = 5
   MINIMUM_FARE = 1
@@ -17,7 +17,11 @@ class Journey
   end
 
   def fare
-    complete? ? MINIMUM_FARE : FIXED_PENALTY
+    complete? ? calculated_fare : FIXED_PENALTY
   end
-  
+
+  def calculated_fare
+    MINIMUM_FARE
+  end
+
 end
