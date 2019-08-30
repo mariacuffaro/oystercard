@@ -10,12 +10,6 @@ describe JourneyLog do
     expect(subject.journey).not_to be_nil
   end
 
-  it "completes the Journey when the journey is ended" do
-    subject.start(entry_station)
-    subject.finish(exit_station)
-    expect(subject.journey).to eq(nil)
-  end
-
   it "adds entry station to the journey log" do
     subject.start(entry_station)
     subject.finish(exit_station)
