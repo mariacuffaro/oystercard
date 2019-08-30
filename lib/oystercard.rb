@@ -7,19 +7,17 @@ class Oystercard
 
   def initialize(balance = DEFAULT_BALANCE)
     @balance = balance
-    @max_limit = MAX_LIMIT
-    @min_fare = MIN_FARE
     @journeys = []
   end
 
   def top_up(amount)
-    raise "Cannot top up above #{@max_limit}" if balance_limit_exceeded?(amount)
+    raise "Cannot top up above #{MAX_LIMIT}" if balance_limit_exceeded?(amount)
 
     @balance += amount
   end
 
   def touch_in(station)
-    raise "Card must have at least #{@min_fare} to travel" if insufficient_balance
+    raise "Card must have at least #{MIN_FARE} to travel" if insufficient_balance
 
     @journey = Journey.new(station)
   end
@@ -32,18 +30,18 @@ class Oystercard
     @journey = nil
   end
 
-  def in_journey?
-    @journey != nil
-  end
+  # def in_journey?
+  #   @journey != nil
+  # end
 
   private
 
   def insufficient_balance
-    @balance < @min_fare
+    @balance < MIN_FARE
   end
 
   def balance_limit_exceeded?(amount)
-    (@balance + amount) > @max_limit
+    (@balance + amount) > MAX_LIMIT
   end
 
   def deduct(amount)
