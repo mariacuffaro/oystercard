@@ -6,23 +6,24 @@ class Journey
 
   def initialize(station,zone)
     @origin = Station.new(station,zone)
-    @destination = Station.new
   end
 
   def finish(station,zone)
     @destination = Station.new(station,zone)
   end
 
-  def complete?
-    !destination.nil?
-  end
-
   def fare
     complete? ? calculated_fare : FIXED_PENALTY
   end
 
+  private
+  
   def calculated_fare
     (@destination.zone - @origin.zone).abs + 1
+  end
+
+  def complete?
+    !destination.nil?
   end
 
 end

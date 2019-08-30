@@ -25,7 +25,6 @@ class Oystercard
   def touch_out(station,zone)
     @journey_log.finish(station,zone)
     deduct(@journey_log.journey.fare)
-   #  store_journey
   end
 
   private
@@ -42,8 +41,4 @@ class Oystercard
     @balance -= amount
   end
 
-  def store_journey
-    # @journeys << @journey
-    # @journey = nil
-  end
 end

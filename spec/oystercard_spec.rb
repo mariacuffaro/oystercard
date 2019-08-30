@@ -5,12 +5,13 @@ describe Oystercard do
   let(:station) { double :station }
   let(:end_station) { double :station }
 
+
   def touch_out
-    subject.touch_out(end_station)
+    subject.touch_out(end_station,5)
   end
 
   def touch_in
-    subject.touch_in(station)
+    subject.touch_in(station,1)
   end
 
   it 'starts with a zero balance' do
@@ -43,14 +44,10 @@ describe Oystercard do
       touch_in
     end
 
-    it 'deducts the minimum fare' do
-      expect { touch_out }.to change { subject.balance }.by(-Oystercard::MIN_FARE)
+    it 'deducts the correct fare' do
+      expect { touch_out }.to change { subject.balance }.by(-5)
     end
 
-    it 'forgets the entry station' do
-      touch_out
-      expect(subject.journey).to be_nil
-    end
   end
 
 end
