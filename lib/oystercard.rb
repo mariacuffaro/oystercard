@@ -1,5 +1,5 @@
 class Oystercard
-  attr_reader :balance, :journeys, :journey
+  attr_reader :balance, :journey_log
 
   MAX_LIMIT = 90
   MIN_FARE = 1

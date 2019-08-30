@@ -10,14 +10,17 @@ class JourneyLog
   end
 
   def finish(station,zone)
-    current_journey
+    get_current_journey
     @journey.finish(station,zone)
-    @journeys << {:entry_station => @journey.origin.name, :exit_station => @journey.destination.name}
-    #@journey = nil
+    add_journey_to_log
   end
 
   private
-  def current_journey
+  def get_current_journey
     @journey ||= Journey.new
+  end
+
+  def add_journey_to_log
+    @journeys << {:entry_station => @journey.origin.name, :exit_station => @journey.destination.name}
   end
 end
