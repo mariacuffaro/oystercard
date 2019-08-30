@@ -11,6 +11,7 @@ class JourneyLog
 
   def finish(station)
     current_journey
+    @journey.finish(station)
     @journeys << {:entry_station => @journey.origin, :exit_station => @journey.destination}
     #@journey = nil
   end
