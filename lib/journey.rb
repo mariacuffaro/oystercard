@@ -1,11 +1,12 @@
 class Journey
-  attr_reader :origin, :destination, :calculated_fare
+  attr_accessor :origin, :destination
 
   FIXED_PENALTY = 5
   MINIMUM_FARE = 1
 
   def initialize(station,zone)
     @origin = Station.new(station,zone)
+    @destination = Station.new
   end
 
   def finish(station,zone)

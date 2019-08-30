@@ -12,7 +12,7 @@ class JourneyLog
   def finish(station,zone)
     current_journey
     @journey.finish(station,zone)
-    @journeys << {:entry_station => @journey.origin, :exit_station => @journey.destination}
+    @journeys << {:entry_station => @journey.origin.name, :exit_station => @journey.destination.name}
     #@journey = nil
   end
 

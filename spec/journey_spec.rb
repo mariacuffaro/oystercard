@@ -3,9 +3,11 @@ require './lib/station'
 
 describe Journey do
   context 'given an origin' do
-    let(:origin) { double :station }
+    let(:station) { double :station }
     let(:zone) { double :zone }
-    subject { described_class.new(origin,zone) }
+    subject { described_class.new(station,zone) }
+    let(:zone_a) {1}
+    let(:zone_b) {2}
 
     let(:origin) { double :station }
 
@@ -33,16 +35,14 @@ describe Journey do
       end
 
       it 'knows the journey is complete' do
-        expect(subject).to be_complete
-      end
-
-      it 'returns calculated fare' do
+        subject { described_class.new("Walthamstow",zone_a) }
+        subject.finish("Victoria",zone_b)
         expect(subject.fare).to eq subject.calculated_fare
       end
 
       it 'returns correct fare' do
-        origin = Station.new(name: "Walthamstow",zone: 4)
-        destination = Station.new(name: "Victoria",zone: 1)
+        origin = Station.new("Walthamstow",4)
+        destination = Station.new("Victoria",1)
         expect(subject.fare).to eq 4
       end
     end

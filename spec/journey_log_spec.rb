@@ -14,13 +14,14 @@ describe JourneyLog do
   it "adds entry station to the journey log" do
     subject.start(entry_station, zone)
     subject.finish(exit_station, zone)
-    expect(subject.journeys[-1][:entry_station]).to eq(entry_station.name)
+    #allow(entry_station).to receive(:)
+    expect(subject.journeys[-1][:entry_station]).to eq(entry_station)
   end
 
   it "adds exit station to the journey log" do
     subject.start(entry_station,zone)
     subject.finish(exit_station,zone)
-    expect(subject.journeys[-1][:exit_station]).to eq(exit_station.name)
+    expect(subject.journeys[-1][:exit_station]).to eq(exit_station)
   end
 
 end
