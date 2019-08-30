@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/student/Projects/week2/oystercard/spec/journey_log_spec.rb": [
+      "/Users/dangyi/Documents/Projects/oystercard/spec/journey_log_spec.rb": [
         1,
         null,
         1,
@@ -28,7 +28,7 @@
         null,
         null
       ],
-      "/Users/student/Projects/week2/oystercard/lib/journey_log.rb": [
+      "/Users/dangyi/Documents/Projects/oystercard/lib/journey_log.rb": [
         1,
         1,
         null,
@@ -53,7 +53,7 @@
         null,
         null
       ],
-      "/Users/student/Projects/week2/oystercard/spec/journey_spec.rb": [
+      "/Users/dangyi/Documents/Projects/oystercard/spec/journey_spec.rb": [
         1,
         null,
         1,
@@ -97,7 +97,7 @@
         null,
         null
       ],
-      "/Users/student/Projects/week2/oystercard/lib/journey.rb": [
+      "/Users/dangyi/Documents/Projects/oystercard/lib/journey.rb": [
         1,
         1,
         null,
@@ -122,7 +122,7 @@
         null,
         null
       ],
-      "/Users/student/Projects/week2/oystercard/spec/oystercard_spec.rb": [
+      "/Users/dangyi/Documents/Projects/oystercard/spec/oystercard_spec.rb": [
         1,
         null,
         1,
@@ -180,7 +180,7 @@
         null,
         null
       ],
-      "/Users/student/Projects/week2/oystercard/lib/oystercard.rb": [
+      "/Users/dangyi/Documents/Projects/oystercard/lib/oystercard.rb": [
         1,
         1,
         null,
@@ -231,7 +231,7 @@
         null,
         null
       ],
-      "/Users/student/Projects/week2/oystercard/spec/station_spec.rb": [
+      "/Users/dangyi/Documents/Projects/oystercard/spec/station_spec.rb": [
         1,
         null,
         1,
@@ -246,7 +246,7 @@
         null,
         null
       ],
-      "/Users/student/Projects/week2/oystercard/lib/station.rb": [
+      "/Users/dangyi/Documents/Projects/oystercard/lib/station.rb": [
         1,
         1,
         null,
@@ -257,6 +257,6 @@
         null
       ]
     },
-    "timestamp": 1567170753
+    "timestamp": 1567171046
   }
 }
