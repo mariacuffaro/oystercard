@@ -34,8 +34,8 @@ describe Journey do
         expect(subject).to be_complete
       end
 
-      it 'returns minimum fare' do
-        expect(subject.fare).to eq described_class::MINIMUM_FARE
+      it 'returns calculated fare' do
+        expect(subject.fare).to eq described_class::calculated_fare
       end
     end
   end
