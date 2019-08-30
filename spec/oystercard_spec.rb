@@ -42,7 +42,7 @@ describe Oystercard do
       subject.top_up(5)
       touch_in
     end
-    
+
     it 'deducts the minimum fare' do
       expect { touch_out }.to change { subject.balance }.by(-Oystercard::MIN_FARE)
     end
@@ -53,16 +53,4 @@ describe Oystercard do
     end
   end
 
-  describe 'journey history' do
-    it 'stores previous journeys' do
-      subject.top_up(5)
-      touch_in
-      touch_out
-
-      journey = subject.journeys.last
-
-      expect(journey.origin).to eq station
-      expect(journey.destination).to eq end_station
-    end
-  end
 end
