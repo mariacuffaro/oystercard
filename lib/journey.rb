@@ -4,12 +4,12 @@ class Journey
   FIXED_PENALTY = 5
   MINIMUM_FARE = 1
 
-  def initialize(origin)
-    @origin = origin
+  def initialize(station,zone)
+    @origin = Station.new(station,zone)
   end
 
-  def finish(destination)
-    @destination = destination
+  def finish(station,zone)
+    @destination = Station.new(station,zone)
   end
 
   def complete?
@@ -21,7 +21,7 @@ class Journey
   end
 
   def calculated_fare
-    MINIMUM_FARE
+    (@destination.zone - @origin.zone).abs + 1
   end
 
 end

@@ -1,14 +1,16 @@
 require './lib/journey'
+require './lib/station'
 
 describe Journey do
   context 'given an origin' do
     let(:origin) { double :station }
-    subject { described_class.new(origin) }
+    let(:zone) { double :zone }
+    subject { described_class.new(origin,zone) }
 
     let(:origin) { double :station }
 
     it 'has an origin' do
-      expect(subject.origin).to eq origin
+      expect(subject.origin).to be_kind_of(Station)
     end
 
     it 'knows the journey is not complete' do
@@ -23,11 +25,11 @@ describe Journey do
       let(:destination) { double :station }
 
       before(:each) do
-        subject.finish(destination)
+        subject.finish(destination,zone)
       end
 
       it 'has a destination' do
-        expect(subject.destination).to eq destination
+        expect(subject.destination).to be_kind_of(Station)
       end
 
       it 'knows the journey is complete' do

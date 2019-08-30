@@ -5,13 +5,13 @@ class JourneyLog
     @journeys = []
   end
 
-  def start(station)
-    @journey = Journey.new(station)
+  def start(station,zone)
+    @journey = Journey.new(station,zone)
   end
 
-  def finish(station)
+  def finish(station,zone)
     current_journey
-    @journey.finish(station)
+    @journey.finish(station,zone)
     @journeys << {:entry_station => @journey.origin, :exit_station => @journey.destination}
     #@journey = nil
   end
