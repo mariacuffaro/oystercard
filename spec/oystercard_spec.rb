@@ -35,11 +35,6 @@ describe Oystercard do
       expect { touch_in }.to raise_error "Card must have at least #{Oystercard::MIN_FARE} to travel"
     end
 
-    it 'starts the journey' do
-      subject.top_up(1)
-      touch_in
-      expect(subject.journey).not_to be_nil
-    end
   end
 
   describe '#touch_out' do
@@ -49,7 +44,6 @@ describe Oystercard do
     end
     
     it 'deducts the minimum fare' do
-      p subject.journey.complete?
       expect { touch_out }.to change { subject.balance }.by(-Oystercard::MIN_FARE)
     end
 

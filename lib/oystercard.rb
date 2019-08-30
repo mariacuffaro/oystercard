@@ -7,7 +7,7 @@ class Oystercard
 
   def initialize(balance = DEFAULT_BALANCE)
     @balance = balance
-    @journeys = []
+    # @journeys = []
   end
 
   def top_up(amount)
@@ -19,13 +19,13 @@ class Oystercard
   def touch_in(station)
     raise "Card must have at least #{MIN_FARE} to travel" if insufficient_balance
 
-    @journey = Journey.new(station)
+    # @journey = Journey.new(station)
   end
 
   def touch_out(station)
-    @journey.finish(station)
+    # @journey.finish(station)
     deduct(@journey.fare)
-    store_journey
+   #  store_journey
   end
 
   private
@@ -43,7 +43,7 @@ class Oystercard
   end
 
   def store_journey
-    @journeys << @journey
-    @journey = nil
+    # @journeys << @journey
+    # @journey = nil
   end
 end
